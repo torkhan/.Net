@@ -9,7 +9,7 @@ namespace CorrectionCompteBancaire.Classes
     {
         List<Compte> comptes;
         public List<Compte> Comptes { get => comptes; set => comptes = value; }
-        
+
 
         private Sauvegarde sv;
         public Banque()
@@ -43,6 +43,6 @@ namespace CorrectionCompteBancaire.Classes
             return Comptes.Count;
         }
 
-        
+
     }
 }

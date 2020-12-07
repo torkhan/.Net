@@ -33,7 +33,7 @@ namespace Annuaire
                         break;
                     case "4":
                         Contact contact = ActionRechercherContact();
-                        if(contact != null)
+                        if (contact != null)
                         {
                             Console.WriteLine(contact);
                         }
@@ -65,29 +65,51 @@ namespace Annuaire
             contact.Prenom = Console.ReadLine();
             Console.Write("Téléphone : ");
             contact.Telephone = Console.ReadLine();
-            if(annuaire.Contacts.Count > 0)
+            //if(annuaire.Contacts.Count > 0)
+            //{
+            //    contact.Id = annuaire.Contacts[annuaire.Contacts.Count - 1].Id + 1;
+            //}
+            //else
+            //{
+            //    contact.Id = 1;
+            //}
+            //annuaire.Contacts.Add(contact);
+            //annuaire.SaveContactsFile();
+
+            if (contact.Save())
             {
-                contact.Id = annuaire.Contacts[annuaire.Contacts.Count - 1].Id + 1;
+                Console.WriteLine("Contact ajouté avec l'id " + contact.Id);
             }
             else
             {
-                contact.Id = 1;
+                Console.WriteLine("Erreur insertion base de données");
             }
-            annuaire.Contacts.Add(contact);
-            annuaire.SaveContactsFile();
         }
         private void ActionModifierContact()
         {
             Contact contact = ActionRechercherContact();
-            if(contact != null)
+            if (contact != null)
             {
+                Console.Write("Merci de saisir le nouveau nom : ");
+                contact.Telephone = Console.ReadLine();
+                Console.Write("Merci de saisir le nouveau prenom : ");
+                contact.Telephone = Console.ReadLine();
                 Console.Write("Merci de saisir le nouveau numéro de téléphone : ");
                 contact.Telephone = Console.ReadLine();
-                annuaire.SaveContactsFile();
+                /* annuaire.SaveContactsFile();*/
+                if (contact.Update())
+                {
+                    Console.WriteLine("modification effectuée");
+
+                }
+                else
+                {
+                    Console.WriteLine("erreur database");
+                }
             }
             else
             {
-                Console.WriteLine("Aucun contact avec ce nom");
+                Console.WriteLine("Aucun contact avec ce id");
             }
         }
 
@@ -96,20 +118,31 @@ namespace Annuaire
             Contact contact = ActionRechercherContact();
             if (contact != null)
             {
-                annuaire.Contacts.Remove(contact);
-                annuaire.SaveContactsFile();
+                if (contact.Delete())
+                {
+                    Console.WriteLine("Suppression effectuée");
+                }
+                else
+                {
+                    Console.WriteLine("Erreur base de données");
+                }
+                //annuaire.Contacts.Remove(contact);
+                //annuaire.SaveContactsFile();
             }
             else
             {
-                Console.WriteLine("Aucun contact avec ce nom");
+                Console.WriteLine("Aucun contact avec cet id");
             }
         }
 
         private Contact ActionRechercherContact()
         {
-            Console.Write("Nom du contact : ");
-            string nom = Console.ReadLine();
-            return annuaire.Contacts.Find(c => c.Nom == nom);
+            //Console.Write("Nom du contact : ");
+            //string nom = Console.ReadLine();
+            //return annuaire.Contacts.Find(c => c.Nom == nom);
+            Console.Write("Id du contact : ");
+            int id = Convert.ToInt32(Console.ReadLine());
+            return Contact.GetContactById(id);
         }
     }
 }
