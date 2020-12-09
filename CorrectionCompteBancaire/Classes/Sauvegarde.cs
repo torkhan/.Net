@@ -47,33 +47,33 @@ namespace CorrectionCompteBancaire.Classes
         public List<Operation> GetOperations(int numero)
         {
             List<Operation> operations = new List<Operation>();
-            if(File.Exists(operationFile))
-            {
-                StreamReader reader = new StreamReader(operationFile);
-                string ligne = reader.ReadLine();
-                while(ligne != null)
-                {
-                    ligne = reader.ReadLine();
-                    if(ligne != null)
-                    {
-                        string[] content = ligne.Split(';');
-                        int numeroCompte;
-                        Int32.TryParse(content[0], out numeroCompte);
-                        if(numeroCompte == numero)
-                        {
-                            int numeroOperation;
-                            DateTime dateOperation;
-                            decimal montant;
-                            Int32.TryParse(content[1], out numeroOperation);
-                            DateTime.TryParse(content[2], out dateOperation);
-                            Decimal.TryParse(content[3], out montant);
-                            Operation o = new Operation(numeroOperation, dateOperation, montant);
-                            operations.Add(o);
-                        }
-                    }
-                }
-                reader.Close();
-            }
+            //if(File.Exists(operationFile))
+            //{
+            //    StreamReader reader = new StreamReader(operationFile);
+            //    string ligne = reader.ReadLine();
+            //    while(ligne != null)
+            //    {
+            //        ligne = reader.ReadLine();
+            //        if(ligne != null)
+            //        {
+            //            string[] content = ligne.Split(';');
+            //            int numeroCompte;
+            //            Int32.TryParse(content[0], out numeroCompte);
+            //            if(numeroCompte == numero)
+            //            {
+            //                int numeroOperation;
+            //                DateTime dateOperation;
+            //                decimal montant;
+            //                Int32.TryParse(content[1], out numeroOperation);
+            //                DateTime.TryParse(content[2], out dateOperation);
+            //                Decimal.TryParse(content[3], out montant);
+            //                Operation o = new Operation(numeroOperation, dateOperation, montant);
+            //                operations.Add(o);
+            //            }
+            //        }
+            //    }
+            //    reader.Close();
+            //}
             return operations;
         }
 

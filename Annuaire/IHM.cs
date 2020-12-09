@@ -33,7 +33,7 @@ namespace Annuaire
                         break;
                     case "4":
                         Contact contact = ActionRechercherContact();
-                        if (contact != null)
+                        if(contact != null)
                         {
                             Console.WriteLine(contact);
                         }
@@ -76,40 +76,38 @@ namespace Annuaire
             //annuaire.Contacts.Add(contact);
             //annuaire.SaveContactsFile();
 
-            if (contact.Save())
+            if(contact.Save())
             {
                 Console.WriteLine("Contact ajouté avec l'id " + contact.Id);
             }
-            else
-            {
+            else {
                 Console.WriteLine("Erreur insertion base de données");
             }
         }
         private void ActionModifierContact()
         {
             Contact contact = ActionRechercherContact();
-            if (contact != null)
+            if(contact != null)
             {
                 Console.Write("Merci de saisir le nouveau nom : ");
-                contact.Telephone = Console.ReadLine();
-                Console.Write("Merci de saisir le nouveau prenom : ");
-                contact.Telephone = Console.ReadLine();
+                contact.Nom = Console.ReadLine();
+                Console.Write("Merci de saisir le nouveau prénom : ");
+                contact.Prenom= Console.ReadLine();
                 Console.Write("Merci de saisir le nouveau numéro de téléphone : ");
                 contact.Telephone = Console.ReadLine();
-                /* annuaire.SaveContactsFile();*/
-                if (contact.Update())
+                if(contact.Update())
                 {
-                    Console.WriteLine("modification effectuée");
-
+                    Console.WriteLine("Modification effectuée");
                 }
                 else
                 {
-                    Console.WriteLine("erreur database");
+                    Console.WriteLine("Erreur base de données");
                 }
+                //annuaire.SaveContactsFile();
             }
             else
             {
-                Console.WriteLine("Aucun contact avec ce id");
+                Console.WriteLine("Aucun contact avec cet id");
             }
         }
 

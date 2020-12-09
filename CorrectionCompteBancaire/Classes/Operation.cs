@@ -17,8 +17,8 @@ namespace CorrectionCompteBancaire.Classes
         private static SqlDataReader reader;
 
         public int Id { get => id; }
-        public DateTime DateOperation { get => dateOperation; }
-        public decimal Montant { get => montant; }
+        public DateTime DateOperation { get => dateOperation;}
+        public decimal Montant { get => montant;}
 
         public Operation(decimal montant)
         {
@@ -64,9 +64,9 @@ namespace CorrectionCompteBancaire.Classes
             command.Parameters.Add(new SqlParameter("@compteId", compteId));
             Tools.Connection.Open();
             reader = command.ExecuteReader();
-            while (reader.Read())
+            while(reader.Read())
             {
-                Operation o = new Operation(reader.GetInt32(0), reader.GetDateTime(1), reader.GetDecimal(2), compteId);
+                Operation o = new Operation(reader.GetInt32(0),reader.GetDateTime(1), reader.GetDecimal(2), compteId);
                 operations.Add(o);
             }
             reader.Close();

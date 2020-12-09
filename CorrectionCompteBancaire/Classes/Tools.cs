@@ -9,7 +9,7 @@ namespace CorrectionCompteBancaire.Classes
 {
     class Tools
     {
-        public static SqlConnection Connection = new SqlConnection(@"Data Source=(LocalDb)\Banque;Integrated Security=True");
+        public static SqlConnection Connection = new SqlConnection(@"Data Source=(LocalDb)\coursM2I;Integrated Security=True");
         public static bool CheckName(string name)
         {
             string pattern = @"[a-zA-Z\s-]+";
@@ -59,7 +59,7 @@ namespace CorrectionCompteBancaire.Classes
                     catch (TargetInvocationException ex)
                     {
                         throw ex.InnerException;
-                    }
+                    }                    
                     error = false;
                 }
                 catch (Exception ex)
@@ -68,6 +68,6 @@ namespace CorrectionCompteBancaire.Classes
                     error = true;
                 }
             } while (error);
-        }
+        } 
     }
 }

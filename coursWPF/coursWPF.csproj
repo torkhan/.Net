@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Page Update="PersonneWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ControleWPF.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CleanWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="TaquinWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+</Project>

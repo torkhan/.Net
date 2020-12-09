@@ -23,7 +23,7 @@ namespace GestionHotel.Classes
             int id = (int)command.ExecuteScalar();
             command.Dispose();
             connection.Close();
-            if (id > 0)
+            if(id > 0)
             {
                 hotel = new Hotel(id, nom, adresse, telephone);
             }
@@ -38,7 +38,7 @@ namespace GestionHotel.Classes
             command.Parameters.Add(new SqlParameter("@nom", nom));
             connection.Open();
             reader = command.ExecuteReader();
-            if (reader.Read())
+            if(reader.Read())
             {
                 hotel = new Hotel(reader.GetInt32(0), nom, reader.GetString(1), reader.GetString(2));
             }
@@ -57,7 +57,7 @@ namespace GestionHotel.Classes
             command.Parameters.Add(new SqlParameter("@hotel_id", hotelId));
             connection.Open();
             reader = command.ExecuteReader();
-            while (reader.Read())
+            while(reader.Read())
             {
                 Client c = new Client(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetInt32(0));
                 clients.Add(c);
@@ -76,9 +76,9 @@ namespace GestionHotel.Classes
             command.Parameters.Add(new SqlParameter("@hotel_id", hotelId));
             connection.Open();
             reader = command.ExecuteReader();
-            while (reader.Read())
+            while(reader.Read())
             {
-                Chambre c = new Chambre(reader.GetInt32(1), reader.GetInt32(2), reader.GetString(3), reader.GetDecimal(4), reader.GetInt32(0));
+                Chambre c = new Chambre(reader.GetInt32(1),reader.GetInt32(2),reader.GetString(3),reader.GetDecimal(4), reader.GetInt32(0));
                 chambres.Add(c);
             }
             reader.Close();
@@ -95,7 +95,7 @@ namespace GestionHotel.Classes
             command.Parameters.Add(new SqlParameter("@hotel_id", hotelId));
             connection.Open();
             reader = command.ExecuteReader();
-            while (reader.Read())
+            while(reader.Read())
             {
                 Reservation r = new Reservation(reader.GetInt32(0), reader.GetString(4), reader.GetInt32(2), reader.GetDecimal(3), reader.GetInt32(1));
                 reservations.Add(r);
@@ -160,7 +160,7 @@ namespace GestionHotel.Classes
             if (reader.Read())
             {
                 reservation = new Reservation(id, reader.GetString(4), reader.GetInt32(2), reader.GetDecimal(3), reader.GetInt32(1));
-
+                
             }
             reservation.Client = GetClientId(reservation.Client.Id);
             reservation.Chambres = GetChambresReservation(reservation.Id);
@@ -209,15 +209,15 @@ namespace GestionHotel.Classes
                 "values (@numero, @client_id, @hotel_id, @total, @statut)";
             command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@numero", Guid.NewGuid().ToString()));
-            command.Parameters.Add(new SqlParameter("@client_id", reservation.Client.Id));
-            command.Parameters.Add(new SqlParameter("@hotel_id", hotelId));
-            command.Parameters.Add(new SqlParameter("@total", reservation.Total));
-            command.Parameters.Add(new SqlParameter("@total", ReservationStatut.Valide.ToString()));
+            command.Parameters.Add(new SqlParameter("@client_id",reservation.Client.Id));
+            command.Parameters.Add(new SqlParameter("@hotel_id",hotelId));
+            command.Parameters.Add(new SqlParameter("@total",reservation.Total));
+            command.Parameters.Add(new SqlParameter("@total",ReservationStatut.Valide.ToString()));
             connection.Open();
             int nbRow = command.ExecuteNonQuery();
             command.Dispose();
             connection.Close();
-            if (nbRow == 1)
+            if(nbRow == 1)
             {
                 reservation.Chambres.ForEach((c) =>
                 {
@@ -266,7 +266,7 @@ namespace GestionHotel.Classes
             int nbRow = command.ExecuteNonQuery();
             command.Dispose();
             connection.Close();
-            if (reservation.Statut == ReservationStatut.Annule && nbRow == 1)
+            if(reservation.Statut == ReservationStatut.Annule && nbRow == 1)
             {
                 reservation.Chambres.ForEach((c) =>
                 {

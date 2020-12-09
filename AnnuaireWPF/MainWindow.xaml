@@ -1,0 +1,42 @@
+﻿<Window x:Class="AnnuaireWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnnuaireWPF"
+        mc:Ignorable="d"
+        Title="Annuaire" Height="361" Width="687">
+    <Grid>
+        <Separator HorizontalAlignment="Left" Margin="95,0,0,0" VerticalAlignment="Center" Height="20" Width="346" RenderTransformOrigin="0.5,0.5">
+            <Separator.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90.013"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Separator.RenderTransform>
+        </Separator>
+        <Label Content="Nom : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="boxNom" HorizontalAlignment="Left" Margin="67,10,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="194" Height="26"/>
+        <Label Content="Prénom : " HorizontalAlignment="Left" Margin="0,58,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="boxPrenom" HorizontalAlignment="Left" Margin="67,58,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="194" Height="26"/>
+        <Label Content="Téléphone : " HorizontalAlignment="Left" Margin="0,104,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="boxTelephone" HorizontalAlignment="Left" Margin="67,104,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="194" Height="26"/>
+        <Button Click="ConfirmClick" Content="Valider" HorizontalAlignment="Left" Margin="10,145,0,0" VerticalAlignment="Top" Height="46" Width="251"/>
+        <TextBlock x:Name="result" HorizontalAlignment="Left" Margin="12,218,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" Width="249"/>
+        <Label Content="Liste des contacts" HorizontalAlignment="Left" Margin="283,5,0,0" VerticalAlignment="Top"/>
+        <ListView x:Name="listeViewContacts" Margin="283,71,10,43">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nom" Width="130" DisplayMemberBinding="{Binding Nom}"/>
+                    <GridViewColumn Header="Prénom" Width="130" DisplayMemberBinding="{Binding Prenom}"/>
+                    <GridViewColumn Header="Téléphone" Width="130" DisplayMemberBinding="{Binding Telephone}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox x:Name="searchBox" HorizontalAlignment="Left" Margin="283,36,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="289" Height="19"/>
+        <Button Click="SearchClick" Content="Rechercher" HorizontalAlignment="Left" Margin="593,36,0,0" VerticalAlignment="Top" Height="19" Width="84"/>
+
+    </Grid>
+</Window>

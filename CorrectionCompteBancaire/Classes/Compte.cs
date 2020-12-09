@@ -34,14 +34,14 @@ namespace CorrectionCompteBancaire.Classes
             Operations = new List<Operation>();
             this.solde = solde;
         }
-        public Compte(int numero, Client client, decimal solde = 0) : this(client, solde)
+        public Compte(int numero,Client client, decimal solde = 0) : this(client, solde)
         {
             this.numero = numero;
         }
 
         public bool Save()
         {
-            if (Client.Save())
+            if(Client.Save())
             {
                 string request = "INSERT INTO Compte (solde, client_id) OUTPUT INSERTED.ID values (@solde,@client_id)";
                 command = new SqlCommand(request, Tools.Connection);
@@ -65,7 +65,7 @@ namespace CorrectionCompteBancaire.Classes
             command.Parameters.Add(new SqlParameter("@id", id));
             Tools.Connection.Open();
             reader = command.ExecuteReader();
-            if (reader.Read())
+            if(reader.Read())
             {
                 compte = new Compte(id, reader.GetDecimal(0));
                 clientId = reader.GetInt32(1);
@@ -73,7 +73,7 @@ namespace CorrectionCompteBancaire.Classes
             reader.Close();
             command.Dispose();
             Tools.Connection.Close();
-            if (compte != null)
+            if(compte != null)
             {
                 compte.Client = Client.GetClientById(clientId);
                 compte.Operations = Operation.GetOperations(id);
@@ -96,13 +96,13 @@ namespace CorrectionCompteBancaire.Classes
         public virtual bool Depot(decimal montant)
         {
             Operation o = new Operation(montant, Numero);
-            if (o.Save())
+            if(o.Save())
             {
                 Operations.Add(o);
                 solde += montant;
                 return Update();
             }
-
+            
             return false;
         }
 
@@ -129,7 +129,7 @@ namespace CorrectionCompteBancaire.Classes
                     }
                 }
                 return Update();
-            }
+            }  
             return false;
         }
 
@@ -137,7 +137,7 @@ namespace CorrectionCompteBancaire.Classes
         {
             string retour = $"Numero {Numero}\n";
             retour += Client.ToString() + "\n";
-            foreach (Operation o in Operations)
+            foreach(Operation o in Operations)
             {
                 retour += o.ToString() + "\n";
             }

@@ -127,15 +127,15 @@ namespace CorrectionCompteBancaire.Classes
                 case "1":
                     Console.Write("Dépôt initial : ((o)ui/ (n)on)");
                     response = Console.ReadLine();
-                    if (response == "o")
+                    if(response == "o")
                     {
                         Console.Write("Solde : ");
                         decimal soldeInitial = Convert.ToDecimal(Console.ReadLine());
-                        compte = new Compte(banque.LastCompteNumber() + 1, client, soldeInitial);
+                        compte = new Compte(banque.LastCompteNumber()+1,client, soldeInitial);
                     }
                     else
                     {
-                        compte = new Compte(banque.LastCompteNumber() + 1, client);
+                        compte = new Compte(banque.LastCompteNumber() + 1,client);
                     }
                     break;
                 case "2":
@@ -172,7 +172,7 @@ namespace CorrectionCompteBancaire.Classes
                     }
                     break;
             }
-            if (compte != null)
+            if(compte != null)
             {
                 compte.ADecouvert += NotificationCompteADecouvert;
                 //banque.Comptes.Add(compte);
@@ -193,12 +193,11 @@ namespace CorrectionCompteBancaire.Classes
             if (compte == null)
             {
                 Console.WriteLine("Aucun compte avec ce numéro");
-            }
-            else
+            }else
             {
                 Console.Write("Montant du dépôt : ");
                 decimal montant = Convert.ToDecimal(Console.ReadLine());
-                if (compte.Depot(montant))
+                if(compte.Depot(montant))
                 {
                     Console.WriteLine("Dépôt effectué, nouveau solde " + compte.Solde);
                 }
@@ -233,12 +232,11 @@ namespace CorrectionCompteBancaire.Classes
         private void ActionAffichage()
         {
             Compte compte = ActionChercherCompte();
-            if (compte == null)
+            if(compte == null)
             {
                 Console.WriteLine("Aucun compte avec ce numéro");
             }
-            else
-            {
+            else {
                 Console.WriteLine("=======Solde et opération========");
                 Console.WriteLine(compte);
             }
@@ -266,7 +264,7 @@ namespace CorrectionCompteBancaire.Classes
             }
             else
             {
-                if (compte is CompteEpargne compteEpargne)
+                if(compte is CompteEpargne compteEpargne)
                 {
                     compteEpargne.CalculeInteret();
                 }

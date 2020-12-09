@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Caisse.Classes;
+using System;
 
-namespace Annuaire
+namespace Caisse
 {
     class Program
     {
         static void Main(string[] args)
         {
             IHM ihm = new IHM();
-            ihm.Start();
+
         }
     }
 }

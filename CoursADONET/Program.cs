@@ -150,6 +150,7 @@ namespace CoursADONET
                         break;
                     case "4":
                         id = Convert.ToInt32(Console.ReadLine());
+                        
                         foreach (DataRow row in personnes.Rows)
                         {
                             if ((int)row["id"] == id)
