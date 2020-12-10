@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnnuaireWPF"
         mc:Ignorable="d"
-        Title="Annuaire" Height="361" Width="687">
+        Title="Annuaire" Height="388" Width="687">
     <Grid>
-        <Separator HorizontalAlignment="Left" Margin="95,0,0,0" VerticalAlignment="Center" Height="20" Width="346" RenderTransformOrigin="0.5,0.5">
+        <Separator HorizontalAlignment="Left" Margin="99,0,0,0" VerticalAlignment="Center" Height="20" Width="346" RenderTransformOrigin="0.5,0.5">
             <Separator.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -23,10 +23,10 @@
         <TextBox x:Name="boxPrenom" HorizontalAlignment="Left" Margin="67,58,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="194" Height="26"/>
         <Label Content="Téléphone : " HorizontalAlignment="Left" Margin="0,104,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="boxTelephone" HorizontalAlignment="Left" Margin="67,104,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="194" Height="26"/>
-        <Button Click="ConfirmClick" Content="Valider" HorizontalAlignment="Left" Margin="10,145,0,0" VerticalAlignment="Top" Height="46" Width="251"/>
-        <TextBlock x:Name="result" HorizontalAlignment="Left" Margin="12,218,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" Width="249"/>
+        <Button Click="ConfirmClick" Content="Valider" HorizontalAlignment="Left" Margin="9,247,0,0" VerticalAlignment="Top" Height="46" Width="251"/>
+        <TextBlock x:Name="result" HorizontalAlignment="Left" Margin="11,314,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" Width="249"/>
         <Label Content="Liste des contacts" HorizontalAlignment="Left" Margin="283,5,0,0" VerticalAlignment="Top"/>
-        <ListView x:Name="listeViewContacts" Margin="283,71,10,43">
+        <ListView x:Name="listeViewContacts" Margin="283,71,10,79">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Nom" Width="130" DisplayMemberBinding="{Binding Nom}"/>
@@ -37,6 +37,13 @@
         </ListView>
         <TextBox x:Name="searchBox" HorizontalAlignment="Left" Margin="283,36,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="289" Height="19"/>
         <Button Click="SearchClick" Content="Rechercher" HorizontalAlignment="Left" Margin="593,36,0,0" VerticalAlignment="Top" Height="19" Width="84"/>
+        <Button Click="EditClick" Content="Modifier" HorizontalAlignment="Left" Margin="283,314,0,0" VerticalAlignment="Top" Height="28" Width="129"/>
+        <Button Click="DeleteClick" Content="Supprimer" HorizontalAlignment="Left" Margin="417,314,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.076,-0.349" Height="28" Width="138"/>
+        <TextBox x:Name="boxMail" HorizontalAlignment="Left" Margin="67,135,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26"/>
+        <Label Content="Email : " HorizontalAlignment="Left" Margin="11,135,0,0" VerticalAlignment="Top"/>
+        <Button Click="ConfirmMailClick" Content="Valider" HorizontalAlignment="Left" Margin="192,135,0,0" VerticalAlignment="Top" Height="26" Width="69"/>
+        <ListBox x:Name="listBoxMails" Margin="11,166,427,134"/>
+        <Button Click="DetailClick" Content="Detail" HorizontalAlignment="Left" Margin="560,314,0,0" VerticalAlignment="Top" Height="28" Width="117"/>
 
     </Grid>
 </Window>

@@ -10,4 +10,10 @@
     <ProjectReference Include="..\Annuaire\Annuaire.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="DetailContactWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>
