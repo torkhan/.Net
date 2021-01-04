@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using fakeboncoin.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +25,10 @@ namespace fakeboncoin
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSession();
+            services.AddHttpContextAccessor();
+            services.AddTransient<IFavoris, FavorisCookieService>();
+            //services.AddSingleton<IFavoris, FavorisSessionService>();
+            //services.AddScoped<IFavoris, FavorisSessionService>();
             services.AddControllersWithViews();
         }
 
@@ -51,7 +56,7 @@ namespace fakeboncoin
             {
                 endpoints.MapControllerRoute(
                     name: "home",
-                    pattern: "/", new { controller="Annonce", action="Index"});
+                    pattern: "/", new { controller = "Annonce", action = "Index" });
                 endpoints.MapControllerRoute(
                     name: "search",
                     pattern: "/search/{search}", new { controller = "Annonce", action = "Index" });
