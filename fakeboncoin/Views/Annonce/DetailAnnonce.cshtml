@@ -3,38 +3,45 @@
     ViewData["Title"] = "DetailAnnonce";
 }
 
-    <div class="container">
-        @if (Model == null)
-        {
-            <div class="row justify-content-md-center align-items-center m-5 p-5">
-                <div class="alert alert-danger">
-                    Aucune annonce avec cet id
+<div class="container">
+    @if (Model == null)
+    {
+        <div class="row justify-content-md-center align-items-center m-5 p-5">
+            <div class="alert alert-danger">
+                Aucune annonce avec cet id
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row justify-content-md-center align-items-center m-5 p-5">
+            <h1 class="col">@Model.Titre</h1>
+        </div>
+        <div class="row justify-content-md-center align-items-center m-5 p-5">
+            <span class="col h3">@Model.Prix €</span>
+        </div>
+        <div class="row justify-content-md-center align-items-center m-5 p-5">
+            @foreach (Image i in Model.Images)
+            {
+                <div class="col-3 bloc-image">
+                    <img src="~/@i.Url" />
                 </div>
-            </div>
-        }
-        else
-        {
-            <div class="row justify-content-md-center align-items-center m-5 p-5">
-                <h1 class="col">@Model.Titre</h1>
-            </div>
-            <div class="row justify-content-md-center align-items-center m-5 p-5">
-                <span class="col h3">@Model.Prix €</span>
-            </div>
-            <div class="row justify-content-md-center align-items-center m-5 p-5">
-                @foreach (Image i in Model.Images)
-                {
-                    <div class="col-3 bloc-image">
-                        <img src="~/@i.Url" />
-                    </div>
-                }
-            </div>
-            <div class="row justify-content-md-center align-items-center m-5 p-5">
-                <div class="col ">@Model.Description</div>
-            </div>
-            <div class="row justify-content-md-center align-items-center m-5 p-5">
+            }
+        </div>
+        <div class="row justify-content-md-center align-items-center m-5 p-5">
+            <div class="col ">@Model.Description</div>
+        </div>
+        <div class="row justify-content-md-center align-items-center m-5 p-5">
+            @if (ViewBag.isFavoris)
+            {
+                <a class="col btn btn-danger" asp-controller="Annonce" asp-action="RemoveFromFavoris" asp-route-id="@Model.Id">Retirer des Favoris</a>
+            }
+            else
+            {
                 <a class="col btn btn-primary" asp-controller="Annonce" asp-action="AddToFavoris" asp-route-id="@Model.Id">Ajouter Favoris</a>
-            </div>
-        }
-    </div>
+            }
+        </div>
+    }
+</div>
 
 

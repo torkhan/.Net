@@ -28,7 +28,7 @@ namespace fakeboncoin.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=(LocalDb)\coursM2i;Initial Catalog=entity;Integrated Security=True");
+            optionsBuilder.UseSqlServer(@"Data Source=(LocalDb)\coursM2i;Integrated Security=True");
         }
     }
 }

@@ -30,6 +30,8 @@ namespace fakeboncoin.Controllers
         public IActionResult DetailAnnonce(int id)
         {
             ViewBag.BaseUrl = "https://localhost:44301/";
+            List<Annonce> annonces = GetAnnoncesFromSession();
+            ViewBag.isFavoris = annonces.Find(a => a.Id == id) != null;
             return View(Annonce.GetAnnonce(id));
         }
 
@@ -41,7 +43,7 @@ namespace fakeboncoin.Controllers
         [HttpPost]
         public IActionResult SubmitFromAnnonce(Annonce annonce, IFormFile[] images)
         {
-            foreach(IFormFile image in images)
+            foreach (IFormFile image in images)
             {
                 annonce.Images.Add(new Image() { Url = Upload(image) });
             }
@@ -61,26 +63,46 @@ namespace fakeboncoin.Controllers
 
         public IActionResult Favoris()
         {
-            string annoncesString = HttpContext.Session.GetString("annonces");
-            List<Annonce> annonces = (annoncesString != null)
-                    ? JsonConvert.DeserializeObject<List<Annonce>>(annoncesString)
-                    : new List<Annonce>();
-            return View(annonces);
+            //string annoncesString = HttpContext.Session.GetString("annonces");
+            //List<Annonce> annonces = (annoncesString != null)
+            //        ? JsonConvert.DeserializeObject<List<Annonce>>(annoncesString)
+            //        : new List<Annonce>();
+            return View(GetAnnoncesFromSession());
         }
 
         public IActionResult AddToFavoris(int id)
         {
             Annonce a = Annonce.GetAnnonce(id);
-            if(a != null)
+            if (a != null)
             {
-                string annoncesString = HttpContext.Session.GetString("annonces");
-                List<Annonce> annonces = (annoncesString != null) 
-                    ? JsonConvert.DeserializeObject<List<Annonce>>(annoncesString) 
-                    : new List<Annonce>();
+                List<Annonce> annonces = GetAnnoncesFromSession();
                 annonces.Add(a);
                 HttpContext.Session.SetString("annonces", JsonConvert.SerializeObject(annonces));
             }
             return RedirectToAction("Favoris");
+        }
+
+
+        public IActionResult RemoveFromFavoris(int id)
+        {
+            List<Annonce> annonces = GetAnnoncesFromSession();
+            Annonce annonce = annonces.Find(a => a.Id == id);
+            if (annonce != null)
+            {
+                annonces.Remove(annonce);
+                HttpContext.Session.SetString("annonces", JsonConvert.SerializeObject(annonces));
+            }
+            return RedirectToAction("Favoris");
+        }
+
+        private List<Annonce> GetAnnoncesFromSession()
+        {
+            string annoncesString = HttpContext.Session.GetString("annonces");
+            List<Annonce> annonces = (annoncesString != null)
+                ? JsonConvert.DeserializeObject<List<Annonce>>(annoncesString)
+                : new List<Annonce>();
+
+            return annonces;
         }
         public IActionResult GetUrl()
         {
