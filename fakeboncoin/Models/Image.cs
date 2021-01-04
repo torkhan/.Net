@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+
 using System.Threading.Tasks;
 
 namespace fakeboncoin.Models
@@ -18,6 +20,7 @@ namespace fakeboncoin.Models
         public int AnnonceId { get => annonceId; set => annonceId = value; }
         public string Url { get => url; set => url = value; }
 
+        [JsonIgnore]
         public Annonce Annonce { get; set; }
 
 

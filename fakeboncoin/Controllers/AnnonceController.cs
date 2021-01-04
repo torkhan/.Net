@@ -7,6 +7,7 @@ using fakeboncoin.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace fakeboncoin.Controllers
 {
@@ -57,6 +58,30 @@ namespace fakeboncoin.Controllers
             return "images/" + file.FileName;
         }
 
+
+        public IActionResult Favoris()
+        {
+            string annoncesString = HttpContext.Session.GetString("annonces");
+            List<Annonce> annonces = (annoncesString != null)
+                    ? JsonConvert.DeserializeObject<List<Annonce>>(annoncesString)
+                    : new List<Annonce>();
+            return View(annonces);
+        }
+
+        public IActionResult AddToFavoris(int id)
+        {
+            Annonce a = Annonce.GetAnnonce(id);
+            if(a != null)
+            {
+                string annoncesString = HttpContext.Session.GetString("annonces");
+                List<Annonce> annonces = (annoncesString != null) 
+                    ? JsonConvert.DeserializeObject<List<Annonce>>(annoncesString) 
+                    : new List<Annonce>();
+                annonces.Add(a);
+                HttpContext.Session.SetString("annonces", JsonConvert.SerializeObject(annonces));
+            }
+            return RedirectToAction("Favoris");
+        }
         public IActionResult GetUrl()
         {
             return View();

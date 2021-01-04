@@ -47,7 +47,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursAspNETCORE", "CoursAsp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankAspNetCore", "BankAspNetCore\BankAspNetCore.csproj", "{95A30337-287D-41A7-B6D6-0C07B92C567C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fakeboncoin", "fakeboncoin\fakeboncoin.csproj", "{3FAF69CD-FB5E-4412-9130-C988899F4A82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fakeboncoin", "fakeboncoin\fakeboncoin.csproj", "{3FAF69CD-FB5E-4412-9130-C988899F4A82}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fake Boncoin", "Fake Boncoin\Fake Boncoin.csproj", "{A01A3B87-9C5C-493C-87EE-EFF2F82F7BCB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -147,6 +149,10 @@ Global
 		{3FAF69CD-FB5E-4412-9130-C988899F4A82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FAF69CD-FB5E-4412-9130-C988899F4A82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FAF69CD-FB5E-4412-9130-C988899F4A82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A01A3B87-9C5C-493C-87EE-EFF2F82F7BCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A01A3B87-9C5C-493C-87EE-EFF2F82F7BCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A01A3B87-9C5C-493C-87EE-EFF2F82F7BCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A01A3B87-9C5C-493C-87EE-EFF2F82F7BCB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

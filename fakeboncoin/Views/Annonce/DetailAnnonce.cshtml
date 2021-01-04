@@ -31,6 +31,9 @@
             <div class="row justify-content-md-center align-items-center m-5 p-5">
                 <div class="col ">@Model.Description</div>
             </div>
+            <div class="row justify-content-md-center align-items-center m-5 p-5">
+                <a class="col btn btn-primary" asp-controller="Annonce" asp-action="AddToFavoris" asp-route-id="@Model.Id">Ajouter Favoris</a>
+            </div>
         }
     </div>
 
