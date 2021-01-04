@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = "Création Compte";
+}
+
+<div class="container">
+    <div class="row justify-content-center m-1 align-items-center">
+        <h1 class="col-6">Création Compte</h1>
+    </div>
+    @if (ViewBag.Message != null)
+    {
+        <div class="row justify-content-center m-1 align-items-center">
+            <div class="alert alert-@ViewBag.Type">
+                @ViewBag.Message
+            </div>
+        </div>
+    }
+    <form asp-action="SubmitCreationCompte" asp-controller="Compte" method="post">
+        <div class="row m-1 justify-content-center align-items-center">
+            <input type="text" name="nom" placeholder="Nom du client" class="col-6 form-control" />
+        </div>
+        <div class="row m-1 justify-content-center align-items-center">
+            <input type="text" name="prenom" placeholder="Prénom du client" class="col-6 form-control" />
+        </div>
+        <div class="row m-1 justify-content-center align-items-center">
+            <input type="text" name="telephone" placeholder="Téléphone du client" class="col-6 form-control" />
+        </div>
+        <div class="row m-1 justify-content-center align-items-center">
+            <input type="text" name="solde" placeholder="Solde initial du compte" class="col-6 form-control" />
+        </div>
+        <div class="row m-1 justify-content-center align-items-center">
+            <button type="submit" class="col-6 btn btn-primary">Valider</button>
+        </div>
+    </form>
+</div>
+
+

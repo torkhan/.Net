@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "Operation";
+}
+
+<div class="container">
+    <div class="row justify-content-center m-1 align-items-center">
+        <h1 class="col-12">Opération @ViewBag.Type</h1>
+    </div>
+    <form asp-controller="Compte" asp-action="SubmitOperation" method="post">
+        <input type="hidden" name="type" value="@ViewBag.Type" />
+        <input type="hidden" name="numero" value="@ViewBag.Numero" />
+        <div class="row justify-content-center m-1 align-items-center">
+            <input class="form-control" type="text" name="montant" placeholder="Montant opération" />
+        </div>
+        <div class="row m-1 justify-content-center align-items-center">
+            <button type="submit" class="col-6 btn btn-primary">Valider</button>
+        </div>
+    </form>
+</div>
+

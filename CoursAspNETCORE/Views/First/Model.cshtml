@@ -1,0 +1,25 @@
+﻿@model ViewModelActionWithViewModel
+@{
+    ViewData["Title"] = "Model";
+}
+
+<h1>Model</h1>
+<div class="row">
+    <div class="col">@Model.Personne.Nom</div>
+    <div class="col">@Model.Personne.Prenom</div>
+</div>
+@foreach(Personne p in Model.ListePersonnes)
+{
+<div class="row">
+    <div class="col">
+        @p.Nom
+    </div>
+    <div class="col">
+        @p.Prenom
+    </div>
+    <div class="col">
+        <a asp-controller="First" asp-action="ActionGetDataFromGet" asp-route-nom="@p.Nom" asp-route-prenom="@p.Prenom">Detail</a>
+    </div>
+</div>
+}
+

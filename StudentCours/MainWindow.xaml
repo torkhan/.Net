@@ -1,0 +1,20 @@
+﻿<Window x:Class="StudentCours.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentCours"
+        mc:Ignorable="d"
+        Title="Gestion etudiants et cours" Height="450" Width="800">
+    <StackPanel>
+        <Menu>
+            <MenuItem Header="Ajouter un cours" Command="{Binding AddCoursCommand}" CommandParameter="{Binding ElementName=Result}" />
+            <MenuItem Header="Ajouter un etudiant" Command="{Binding AddStudentCommand}" CommandParameter="{Binding ElementName=Result}" />
+            <MenuItem Header="Rechercher un etudiant" Command="{Binding StudentCommand}" CommandParameter="{Binding ElementName=Result}" />
+            <MenuItem Header="Rechercher un cours" Command="{Binding CoursCommand}" CommandParameter="{Binding ElementName=Result}" />
+        </Menu>
+        <StackPanel x:Name="Result">
+            
+        </StackPanel>
+    </StackPanel>
+</Window>

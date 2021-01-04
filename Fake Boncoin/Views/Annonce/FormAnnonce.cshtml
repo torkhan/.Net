@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "Ajouter une annonce";
+}
+
+<form class="container" asp-controller="Annonce" asp-action="SubmitFormAnnonce" enctype="multipart/form-data" method="post">
+    <div class="row justify-content-center align-content-center m-1 p-1">
+        <input class="col-8 form-control" type="text" name="titre" placeholder="Titre de l'annonce" />
+    </div>
+    <div class="row justify-content-center align-content-center m-1 p-1">
+        <input class="col-8 form-control" type="text" name="prix" placeholder="Prix de l'annonce" />
+    </div>
+    <div class="row justify-content-center align-content-center m-1 p-1">
+        <textarea class="col-8 form-control" type="text" name="description" placeholder="Description de l'annonce"></textarea>
+    </div>
+    <div class="row justify-content-center align-content-center m-1 p-1">
+        <input class="col-8 " multiple type="file" name="images"/>
+    </div>
+    <div class="row justify-content-center align-content-center m-1 p-1">
+        <button class="btn btn-primary " type="submit">Valider</button>
+    </div>
+
+
+</form>
+

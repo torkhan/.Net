@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="CorrectionWPFBanque.Views.CreationCompteControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CorrectionWPFBanque.Views"
+             mc:Ignorable="d" d:DesignWidth="800" Height="188">
+    <StackPanel>
+        <GroupBox Header="Création Compte">
+            <StackPanel>
+                <GroupBox Header="Création Client">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Nom : " Width="73"></Label>
+                            <TextBox Text="{Binding Nom}" Width="320"></TextBox>
+                            <Label Content="Prénom : "></Label>
+                            <TextBox Text="{Binding Prenom}" Width="320"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Téléphone : "></Label>
+                            <TextBox Text="{Binding Telephone}" Width="319"></TextBox>
+                            <Label Content="Id Client : "></Label>
+                            <Label Content="{Binding Id}"></Label>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Compte">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Solde : " Width="73" />
+                            <TextBox Text="{Binding Solde}" Width="320"></TextBox>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                <Button Content="Valider" Command="{Binding CreateCommand}"></Button>
+                <TextBlock Text="{Binding Result}"></TextBlock>
+            </StackPanel>
+        </GroupBox>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Gestion de contact</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
+</head>
+<body>
+    <header class="container-fluid">
+        <nav>
+            <ul>
+                <li><a asp-action="Index" asp-controller="Contact"><img src="~/img/m2i-formation-logo.jpg" /></a></li>
+                <li><a asp-action="Index" asp-controller="Contact">Accueil</a></li>
+                <li><a asp-action="Form" asp-controller="Contact">Ajouter un contact</a></li>
+                <li><a asp-action="Search" asp-controller="Contact">Rechercher un contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>

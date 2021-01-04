@@ -1,0 +1,28 @@
+﻿@model Contact
+@{
+    Layout = "_LayoutContact";
+}
+<h1>Formulaire contact</h1>
+
+<form asp-controller="Contact" enctype="multipart/form-data" asp-action="SubmitForm" method="post">
+    @if (Model != null)
+    {
+        <input type="hidden" name="id" value="@Model.Id" />
+    }
+    <div class="row m-1 justify-content-center align-items-center">
+        <input type="text" value="@Model?.FirstName" name="firstName" placeholder="Votre nom" class="col-6 form-control" />
+    </div>
+    <div class="row m-1 justify-content-center align-items-center">
+        <input type="text" value="@Model?.LastName" name="lastName" placeholder="Votre prénom" class="col-6 form-control" />
+    </div>
+    <div class="row m-1 justify-content-center align-items-center">
+        <input type="text" value="@Model?.Phone" name="phone" placeholder="Votre téléphone" class="col-6 form-control" />
+    </div>
+    <div class="row m-1 justify-content-center align-items-center">
+        <input type="file" name="avatar" class="col-6 form-control" />
+    </div>
+    <div class="row m-1 justify-content-center align-items-center">
+        <button type="submit" class="col-6 btn btn-success"> Valider</button>
+    </div>
+</form>
+

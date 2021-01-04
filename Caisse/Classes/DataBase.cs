@@ -13,7 +13,21 @@ namespace Caisse.Classes
         private SqlCommand command;
         private SqlDataAdapter produitAdapter;
 
-        public DataBase()
+        private static DataBase _instance = null;
+
+        public static DataBase Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new DataBase();
+                }
+                return _instance;
+            }
+        }
+
+        private DataBase()
         {
             data = new DataSet();
             string request = "SELECT id, titre, prix, stock from produit";
@@ -32,15 +46,31 @@ namespace Caisse.Classes
         {
             Produit produit = null;
             DataTable produits = data.Tables["produits"];
-            foreach(DataRow row in produits.Rows)
+            foreach (DataRow row in produits.Rows)
             {
-                if((int)row["id"] == id)
+                if ((int)row["id"] == id)
                 {
                     produit = new Produit((int)row["id"], (string)row["titre"], (decimal)row["prix"], (int)row["stock"]);
                     break;
                 }
             }
             return produit;
+        }
+
+        public List<Produit> GetProduits(string search = null)
+        {
+            List<Produit> tmpProduits = new List<Produit>();
+            DataTable produits = data.Tables["produits"];
+            foreach (DataRow row in produits.Rows)
+            {
+                if(search == null || (search != null && ((string)row["titre"]).Contains(search)))
+                {
+                    Produit produit = new Produit((int)row["id"], (string)row["titre"], (decimal)row["prix"], (int)row["stock"]);
+                    tmpProduits.Add(produit);
+                }
+                
+            }
+            return tmpProduits;
         }
 
         public bool DescStock(int id)
@@ -77,7 +107,7 @@ namespace Caisse.Classes
             produit.Id = (int)command.ExecuteScalar();
             command.Dispose();
             connection.Close();
-            if(produit.Id > 0)
+            if (produit.Id > 0)
             {
                 SaveProduitDataSet(produit);
             }
@@ -103,7 +133,7 @@ namespace Caisse.Classes
             panier.Id = (int)command.ExecuteScalar();
             command.Dispose();
             connection.Close();
-            if(panier.Id > 0)
+            if (panier.Id > 0)
             {
                 panier.Produits.ForEach(p => SavePanierProduit(panier.Id, p.Id));
                 return true;

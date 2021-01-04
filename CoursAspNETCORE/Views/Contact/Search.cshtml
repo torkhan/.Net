@@ -1,0 +1,10 @@
+﻿@{
+    Layout = "_LayoutContact";
+}
+<h1>Rechercher un contact</h1>
+<form asp-controller="Contact" asp-action="SubmitSearch" method="get">
+    <div class="row">
+        <input type="text" name="search" placeholder="Votre recherche" class="col form-control" />
+        <button type="submit" class="col-2 btn btn-warning">Rechercher</button>
+    </div>
+</form>

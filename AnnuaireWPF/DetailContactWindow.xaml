@@ -16,6 +16,7 @@
         <TextBlock x:Name="blockTelephone" HorizontalAlignment="Left" Margin="132,122,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.17,0.803"/>
         <Label Content="Emails : " HorizontalAlignment="Left" Margin="58,161,0,0" VerticalAlignment="Top"/>
         <ListBox x:Name="listeBoxMails" Margin="111,161,43,54"/>
+        <Button IsEnabled="true" Content="Retour" HorizontalAlignment="Center" Margin="0,373,0,0" VerticalAlignment="Top" Height="29" Width="352" Click="Button_Click"/>
 
 
     </Grid>

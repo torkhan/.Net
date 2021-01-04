@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="StudentCours.Views.AddStudentControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StudentCours.Views"
+             mc:Ignorable="d" d:DesignWidth="800" Height="573">
+    <StackPanel>
+        <GroupBox Header="Ajouter un etudiant">
+            <StackPanel>
+                <Label Margin="10" Content="Nom : "></Label>
+                <TextBox Text="{Binding FirstName}" Margin="10" Padding="10"></TextBox>
+                <Label Margin="10" Content="Prénom : "></Label>
+                <TextBox Text="{Binding LastName}" Margin="10" Padding="10"></TextBox>
+                <Label Content="Cours : " Margin="10"></Label>
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox ItemsSource="{Binding Courses}" SelectedItem="{Binding SelectedCours}" Margin="10" Padding="10" Width="600"></ComboBox>
+                    <Button Content="Ajouter un Cours" Command="{Binding AddCoursCommand}" Margin="10" Padding="10" Width="140"></Button>
+                </StackPanel>
+                <ListBox Margin="10" ItemsSource="{Binding SelectedCourses}" Height="100">
+                </ListBox>
+                <Button Content="Valider" Command="{Binding ConfirmCommand}" Margin="10" Padding="10"></Button>
+            </StackPanel>
+        </GroupBox>
+    </StackPanel>
+</UserControl>

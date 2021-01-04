@@ -35,5 +35,12 @@ namespace AnnuaireWPF
             blockTelephone.Text = contact.Telephone;
             listeBoxMails.ItemsSource = Email.GetEmailsByContact(contact.Id);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow w = new MainWindow();
+            w.Show();
+            this.Close();
+        }
     }
 }

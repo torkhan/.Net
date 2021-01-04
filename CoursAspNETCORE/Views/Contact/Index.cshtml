@@ -1,0 +1,38 @@
+﻿@model List<Contact>
+@{
+    Layout = "_LayoutContact";
+}
+
+<h1>Accueil Contact</h1>
+@*@foreach (Contact c in ViewData["contacts"] as List<Contact>)*@
+@*@foreach (Contact c in ViewBag.Contacts)*@
+@foreach (Contact c in Model)
+{
+    <div class="row">
+        <div class="col">
+            <img src="~/@c.Avatar" />
+        </div>
+        <div class="col">
+            @c.FirstName
+        </div>
+        <div class="col">
+            @c.LastName
+        </div>
+        <div class="col">
+            @c.Phone
+        </div>
+        <div class="col">
+            @foreach (Email e in c.Mails)
+            {
+                <div class="row"><div class="col">@e.Mail</div></div>
+            }
+        </div>
+        <div class="col">
+            <a asp-action="Detail" asp-controller="Contact" asp-route-id="@c.Id">Detail</a>
+            <a asp-action="Form" asp-controller="Contact" asp-route-id="@c.Id">Modifier</a>
+            <a asp-action="Delete" asp-controller="Contact" asp-route-id="@c.Id">Supprimer</a>
+            <a asp-action="FormEmail" asp-controller="Contact" asp-route-id="@c.Id">Ajouter email</a>
+        </div>
+    </div>
+}
+

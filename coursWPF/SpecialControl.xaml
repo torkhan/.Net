@@ -1,0 +1,23 @@
+﻿<Window x:Class="coursWPF.SpecialControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:coursWPF"
+        xmlns:uc="clr-namespace:coursWPF.Controls"
+        mc:Ignorable="d"
+        Title="SpecialControl" Height="450" Width="800">
+    <StackPanel>
+        <Menu>
+            <MenuItem Header="Formulaire personne" Click="Formulaire_Click" ></MenuItem>
+            <MenuItem Header="Liste Personne" Click="ListePersonne_Click"></MenuItem>
+        </Menu>
+        <StackPanel x:Name="stack">
+            <Label Content="Bienvenue sur notre application"></Label>
+            <!--<local:UseControl1 Height="63"></local:UseControl1>-->
+            <!--<local:FormulaireControl Titre="Formulaire personne"></local:FormulaireControl>
+        <uc:ListePersonnesControl></uc:ListePersonnesControl>-->
+        </StackPanel>
+    </StackPanel>
+    
+</Window>

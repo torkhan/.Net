@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="coursWPF.FormulaireControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:coursWPF"
+             mc:Ignorable="d" Height="123" Width="527">
+    <StackPanel>
+        <Label x:Name="labelTitre"></Label>
+        <Label Content="Nom : "></Label>
+        <TextBox></TextBox>
+        <Label Content="Prénom : "></Label>
+        <TextBox></TextBox>
+        <Button Content="Valider" Click="Button_Click"></Button>
+    </StackPanel>
+</UserControl>

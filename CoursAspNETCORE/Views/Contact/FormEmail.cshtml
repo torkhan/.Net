@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "_LayoutContact";
+}
+<div>
+    <form asp-controller="Contact" asp-action="SubmitEmail">
+        <input type="hidden" name="contactId" value="@Model.Id" />
+        <div class="row m-1 justify-content-center align-items-center">
+            <input type="text" name="Mail" placeholder="Email" class="col-6 form-control" />
+        </div>
+        <div class="row m-1 justify-content-center align-items-center">
+            <button type="submit" class="col-6 btn btn-success"> Valider</button>
+        </div>
+    </form>
+</div>
+

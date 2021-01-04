@@ -1,0 +1,35 @@
+﻿@model Contact
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "_LayoutContact";
+}
+@if (Model == null)
+{
+    <h1>Aucun contact avec cet id</h1>
+}
+else
+{
+    <div class="row">
+        <div class="col">Nom : @Model.FirstName</div>
+    </div>
+    <div class="row">
+        <div class="col">Prénom : @Model.LastName</div>
+    </div>
+    <div class="row">
+        <div class="col">Nom : @Model.Phone</div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="row"><div class="col">Emails : </div></div>
+            @foreach (Email e in Model.Mails)
+            {
+                <div class="row">
+                    <div class="col">@e.Mail</div>
+                    <div class="col"><a asp-controller="Contact" asp-action="DeleteEmail" asp-route-emailId="@e.Id" asp-route-contactId="@Model.Id">Supprimer</a></div>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+

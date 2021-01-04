@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="HotelWPFMVVM.Views.CustomersControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HotelWPFMVVM.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel Orientation="Horizontal">
+        <GroupBox Header="Formulaire Client" Width="380" Margin="10">
+            <StackPanel>
+                <Label Content="Nom : " Margin="5"></Label>
+                <TextBox Text="{Binding FirstName}" Margin="5" Padding="5"></TextBox>
+                <Label Content="Prénom : " Margin="5"></Label>
+                <TextBox Text="{Binding LastName}" Margin="5" Padding="5"></TextBox>
+                <Label Content="Téléphone : " Margin="5"></Label>
+                <TextBox Text="{Binding Phone}" Margin="5" Padding="5"></TextBox>
+                <Button Content="Valider" Margin="5" Padding="5" Command="{Binding ConfirmCommand}"></Button>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Clients" Width="380" Margin="10">
+            <ListView Margin="5" ItemsSource="{Binding Customers}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding FirstName}" Width="115"></GridViewColumn>
+                        <GridViewColumn Header="Prénom" DisplayMemberBinding="{Binding LastName}" Width="115"></GridViewColumn>
+                        <GridViewColumn Header="Téléphone" DisplayMemberBinding="{Binding Phone}" Width="120"></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </GroupBox>
+    </StackPanel>
+</UserControl>

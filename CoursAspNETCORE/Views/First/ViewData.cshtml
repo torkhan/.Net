@@ -1,0 +1,16 @@
+﻿@{ 
+    ViewData["Title"] = "Page avec ViewData";
+}
+<h1>Utilisation du viewdata pour récupérer des données du Controller</h1>
+<div class="row">
+    <div class="col">@((ViewData["personne"] as Personne).Nom)</div>
+    <div class="col">@((ViewData["personne"] as Personne).Prenom)</div>
+</div>
+<h2>La liste dans viewData</h2>
+@foreach(Personne p in ViewData["listePersonnes"] as List<Personne>)
+{
+<div class="row">
+    <div class="col">@p.Nom</div>
+    <div class="col">@p.Prenom</div>
+</div>
+}

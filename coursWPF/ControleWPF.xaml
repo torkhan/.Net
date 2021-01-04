@@ -5,17 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:coursWPF"
         mc:Ignorable="d"
-        Title="Controles WPF" Height="454" Width="662">
-    <Grid>
+        Title="Controles WPF" Height="527" Width="662">
+    <Grid Height="517" >
+        <GroupBox Header="Formulaire" Margin="0,57,417,10">
+            <StackPanel Height="385">
+                <Label Content="Nom : " />
+                <TextBox x:Name="textNom"  Text="" TextWrapping="Wrap" Width="227" Height="30" />
+                <Label Content="Prénom : "  />
+                <TextBox x:Name="textPrenom" Text="" TextWrapping="Wrap"  Width="226" Height="33" />
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton x:Name="pSalarie" Content="Salarié"></RadioButton>
+                    <RadioButton x:Name="pChefEntreprise" Content="Chef d'entreprise"></RadioButton>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton x:Name="sCelibataire" Content="Célibataire"></RadioButton>
+                    <RadioButton x:Name="sMarie" Content="Marié"></RadioButton>
+                </StackPanel>
+                <StackPanel>
+                    <CheckBox Content="cas 1"></CheckBox>
+                    <CheckBox Content="cas 2"></CheckBox>
+                    <CheckBox Content="cas 3"></CheckBox>
+                </StackPanel>
+                <StackPanel>
+                    <ComboBox ></ComboBox>
+                </StackPanel>
+                <StackPanel>
+                    <!--<Calendar></Calendar>-->
+                    <DatePicker></DatePicker>
+                    
+                </StackPanel>
+                <Button Click="ValidClick" Content="Valider"  Height="34" Width="226"/>
+            </StackPanel>
 
-        <Label Content="Nom : " HorizontalAlignment="Left" Margin="22,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textNom" HorizontalAlignment="Left" Margin="84,14,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Height="22" Grid.ColumnSpan="2"/>
-        <Label Content="Prénom : " HorizontalAlignment="Left" Margin="22,50,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textPrenom" HorizontalAlignment="Left" Margin="84,54,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Height="22" Grid.ColumnSpan="2"/>
-        <Button Click="ValidClick" Content="Valider" HorizontalAlignment="Left" Margin="25,90,0,0" VerticalAlignment="Top" Height="34" Width="207" Grid.ColumnSpan="2"/>
-        <Button Click="DetailClick" Content="Voir Element" HorizontalAlignment="Left" Margin="250,365,0,0" VerticalAlignment="Top" Height="35" Width="188"/>
-        <Button Click="SupprimerClick" Content="Supprimer" HorizontalAlignment="Left" Margin="458,365,0,0" VerticalAlignment="Top" Height="35" Width="194"/>
-        <ListView x:Name="listePersonnes" Margin="250,14,10,97">
+        </GroupBox>
+        <Button Click="DetailClick" Content="Voir Element" HorizontalAlignment="Left" Margin="250,384,0,0" VerticalAlignment="Top" Height="35" Width="188"/>
+        <Button Click="SupprimerClick" Content="Supprimer" HorizontalAlignment="Left" Margin="458,384,0,0" VerticalAlignment="Top" Height="35" Width="194"/>
+        <ListView x:Name="listePersonnes" Margin="250,52,10,59">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Nom" Width="150" DisplayMemberBinding="{Binding Nom}" />
@@ -23,5 +48,14 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Menu Margin="0,0,0,479">
+            <MenuItem Header="Fichier" >
+                <MenuItem Header="Enregistrer" Click="MenuItem_Click"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Ouvrir" Click="MenuItem_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Edition" Click="MenuItem_Click"></MenuItem>
+        </Menu>
+        
     </Grid>
 </Window>

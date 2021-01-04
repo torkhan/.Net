@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="CorrectionWPFBanque.Views.InfoCompteControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CorrectionWPFBanque.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+        <GroupBox Header="Info Compte">
+            <StackPanel>
+                <GroupBox Header="Recherche">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Numéro compte : "></Label>
+                        <TextBox Text="{Binding Numero}" Width="400"></TextBox>
+                        <Button Content="Rechercher" Command="{Binding SearchCommand}" Width="270"></Button>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Client">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Nom : "></Label>
+                        <Label Content="{Binding Nom}"></Label>
+                        <Label Content="Prénom : "></Label>
+                        <Label Content="{Binding Prenom}"></Label>
+                        <Label Content="Téléphone : "></Label>
+                        <Label Content="{Binding Telephone}"></Label>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Compte">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Solde en euros : "></Label>
+                            <Label Content="{Binding Solde}"></Label>
+                        </StackPanel>
+                        <ListView ItemsSource="{Binding Operations}" Height="180">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding Id}"/>
+                                    <GridViewColumn Header="Date Opération" Width="450" DisplayMemberBinding="{Binding DateOperation}"/>
+                                    <GridViewColumn Header="Montant Opération" Width="270" DisplayMemberBinding="{Binding Montant}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </StackPanel>
+                </GroupBox>
+                <StackPanel Orientation="Horizontal">
+                    <Button Command="{Binding OperationCommand}" CommandParameter="Depot" Content="Effectuer un dépôt" Width="400"></Button>
+                    <Button Command="{Binding OperationCommand}" CommandParameter="Retrait" Content="Effectuer un retrait" Width="400"></Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton IsChecked="{Binding Val1}"  Content="Value 1"></RadioButton>
+                    <RadioButton IsChecked="{Binding Val2}" Content="Value 2"></RadioButton>
+                </StackPanel>
+                <StackPanel>
+                    <StackPanel Visibility="{Binding Visb1}" Orientation="Horizontal">
+                        <Label Content="Value 1"></Label>
+                    </StackPanel>
+                    <StackPanel Visibility="{Binding Visb2}" Orientation="Horizontal">
+                        <Label Content="Value 2"></Label>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+    </StackPanel>
+</UserControl>

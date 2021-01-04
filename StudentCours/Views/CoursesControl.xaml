@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="StudentCours.Views.CoursesControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StudentCours.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+        <GroupBox Header="Liste des cours">
+            <StackPanel Orientation="Horizontal">
+                <GroupBox Header="Cours">
+                    <StackPanel>
+                        <ListBox Margin="10" Width="350" Height="300" ItemsSource="{Binding Courses}" SelectedItem="{Binding SelectedCours}"></ListBox>
+                        <Button Content="Voir Etudiants" Margin="10" Padding="10" Command="{Binding DetailCommand}"></Button>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Etudiants">
+                    <StackPanel>
+                        <ListBox ItemsSource="{Binding Students}" Width="350" Height="350" Margin="10"></ListBox>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </GroupBox>
+    </StackPanel>
+</UserControl>

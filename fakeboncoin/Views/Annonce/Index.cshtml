@@ -1,0 +1,38 @@
+﻿@model List<Annonce>
+@{
+    ViewData["Title"] = "Fake boncoin";
+}
+
+
+<form asp-controller="Annonce" asp-action="Index" method="get" class="cotnainer">
+    <div class="row justify-content-center align-items-center m-1 p-1">
+        <input class="col-8 form-control" placeholder="Rechercher des annonces..." name="search" />
+        <button type="submit" class="col-2 btn btn-secondary">Rechercher</button>
+    </div>
+</form>
+
+@if (Model != null)
+{
+    <div class="container m-10">
+        @foreach(Annonce a in Model)
+        {
+            <a class="bloc-annonce" asp-action="DetailAnnonce" asp-controller="Annonce" asp-route-id="@a.Id">
+                <div class="row m-1 bloc-annonce p-5">
+                    <div class="col-3 bloc-image">
+                        <img src="@a.Images[0].Url" />
+                    </div>
+                    <div class="col">
+                        <div class="row m-1">
+                            <div class="h1 col">@a.Titre</div>
+                        </div>
+                        <div class="row m-1">
+                            <div class="h2 col">Prix @a.Prix</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+        }
+    </div>
+}
+

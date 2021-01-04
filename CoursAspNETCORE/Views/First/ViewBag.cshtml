@@ -1,0 +1,13 @@
+﻿<h1>Utilisation d'un ViewBag Pour récupérer les données d'un controller</h1>
+<div class="row">
+    <div class="col">@ViewBag.Personne.Nom</div>
+    <div class="col">@ViewBag.Personne.Prenom</div>
+</div>
+<h2>La liste dans viewData</h2>
+@foreach (Personne p in ViewBag.ListePersonnes)
+{
+    <div class="row">
+        <div class="col">@p.Nom</div>
+        <div class="col">@p.Prenom</div>
+    </div>
+}

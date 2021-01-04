@@ -35,6 +35,7 @@ namespace coursWPF
 
         private void ValidClick(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show(pChefEntreprise.IsChecked.ToString());
             if(!isEdit)
             {
                 Personne p = new Personne()
@@ -75,6 +76,11 @@ namespace coursWPF
             {
                 personnes.Remove(p);
             }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show((sender as MenuItem).Header.ToString());
         }
     }
 }

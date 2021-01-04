@@ -1,0 +1,24 @@
+﻿<Window x:Class="CorrectionWPFBanque.Views.OperationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CorrectionWPFBanque.Views"
+        mc:Ignorable="d"
+        Title="Operation" Height="143" Width="290">
+    <StackPanel>
+        <GroupBox Header="{Binding Type}">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Numero Compte: "></Label>
+                    <Label Content="{Binding Numero}"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Motant de l'opération : "></Label>
+                    <TextBox Text="{Binding Montant}" Width="140"></TextBox>
+                </StackPanel>
+                <Button Command="{Binding ConfirmCommand}" Content="Valider"></Button>
+            </StackPanel>
+        </GroupBox>
+    </StackPanel>
+</Window>

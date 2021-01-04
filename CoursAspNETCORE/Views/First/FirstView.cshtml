@@ -1,0 +1,15 @@
+﻿@{ 
+    string nom = "abadi";
+    string[] tab = new string[] { "google", "facebook", "microsoft", "amazon" };
+    Layout = "_Layout2";
+}
+
+<h1>Premiere Vue @nom</h1>
+<div class="container-fluid">
+    @foreach(string s in tab)
+    {
+        <div class="row"><div class="col">@s</div></div>
+    }
+</div>
+
+

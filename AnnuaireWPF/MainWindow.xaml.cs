@@ -118,6 +118,7 @@ namespace AnnuaireWPF
             {
                 DetailContactWindow d = new DetailContactWindow(c);
                 d.Show();
+                this.Close();
             }
         }
     }

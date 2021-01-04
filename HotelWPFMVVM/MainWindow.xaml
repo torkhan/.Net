@@ -1,0 +1,19 @@
+﻿<Window x:Class="HotelWPFMVVM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HotelWPFMVVM"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="539" Width="800">
+    <StackPanel>
+        <Menu>
+            <MenuItem Header="Gestion Clients" Command="{Binding CustomerCommand}" CommandParameter="{Binding ElementName=Result}"></MenuItem>
+            <MenuItem Header="Gestion Chambres" Command="{Binding RoomCommand}" CommandParameter="{Binding ElementName=Result}"></MenuItem>
+            <MenuItem Header="Gestion Reservations" Command="{Binding ReservationCommand}" CommandParameter="{Binding ElementName=Result}"></MenuItem>
+        </Menu>
+        <StackPanel x:Name="Result">
+            
+        </StackPanel>
+    </StackPanel>
+</Window>

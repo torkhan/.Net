@@ -11,7 +11,7 @@ namespace Caisse.Classes
 
         public IHM()
         {
-            data = new DataBase();
+            data = DataBase.Instance;
             ActionPrincipal();
         }
 
