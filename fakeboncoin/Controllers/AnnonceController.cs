@@ -30,7 +30,7 @@ namespace fakeboncoin.Controllers
         public IActionResult DetailAnnonce(int id)
         {
             ViewBag.BaseUrl = "https://localhost:44301/";
-            List<Annonce> annonces = GetAnnoncesFromSession();
+            List<Annonce> annonces = GetAnnoncesFromSessionOrCookies();
             ViewBag.isFavoris = annonces.Find(a => a.Id == id) != null;
             return View(Annonce.GetAnnonce(id));
         }
@@ -67,7 +67,7 @@ namespace fakeboncoin.Controllers
             //List<Annonce> annonces = (annoncesString != null)
             //        ? JsonConvert.DeserializeObject<List<Annonce>>(annoncesString)
             //        : new List<Annonce>();
-            return View(GetAnnoncesFromSession());
+            return View(GetAnnoncesFromSessionOrCookies());
         }
 
         public IActionResult AddToFavoris(int id)
@@ -75,9 +75,10 @@ namespace fakeboncoin.Controllers
             Annonce a = Annonce.GetAnnonce(id);
             if (a != null)
             {
-                List<Annonce> annonces = GetAnnoncesFromSession();
+                List<Annonce> annonces = GetAnnoncesFromSessionOrCookies();
                 annonces.Add(a);
-                HttpContext.Session.SetString("annonces", JsonConvert.SerializeObject(annonces));
+                //HttpContext.Session.SetString("annonces", JsonConvert.SerializeObject(annonces));
+                HttpContext.Response.Cookies.Append("annonces", JsonConvert.SerializeObject(annonces));
             }
             return RedirectToAction("Favoris");
         }
@@ -85,19 +86,21 @@ namespace fakeboncoin.Controllers
 
         public IActionResult RemoveFromFavoris(int id)
         {
-            List<Annonce> annonces = GetAnnoncesFromSession();
+            List<Annonce> annonces = GetAnnoncesFromSessionOrCookies();
             Annonce annonce = annonces.Find(a => a.Id == id);
             if (annonce != null)
             {
                 annonces.Remove(annonce);
-                HttpContext.Session.SetString("annonces", JsonConvert.SerializeObject(annonces));
+                //HttpContext.Session.SetString("annonces", JsonConvert.SerializeObject(annonces));
+                HttpContext.Response.Cookies.Append("annonces", JsonConvert.SerializeObject(annonces));
             }
             return RedirectToAction("Favoris");
         }
 
-        private List<Annonce> GetAnnoncesFromSession()
+        private List<Annonce> GetAnnoncesFromSessionOrCookies()
         {
-            string annoncesString = HttpContext.Session.GetString("annonces");
+            //string annoncesString = HttpContext.Session.GetString("annonces");
+            string annoncesString = HttpContext.Request.Cookies["annonces"];
             List<Annonce> annonces = (annoncesString != null)
                 ? JsonConvert.DeserializeObject<List<Annonce>>(annoncesString)
                 : new List<Annonce>();
