@@ -18,13 +18,20 @@ namespace fakeboncoin.Controllers
 
         private IFavoris _favorisService;
 
-        public AnnonceController(IWebHostEnvironment env, IFavoris favoris)
+        private IUpload _uploadService;
+
+        private ILogin _login;
+
+        public AnnonceController(IWebHostEnvironment env, IFavoris favoris, IUpload uploadService, ILogin login)
         {
             _env = env;
             _favorisService = favoris;
+            _uploadService = uploadService;
+            _login = login;
         }
         public IActionResult Index(string search)
         {
+            //ViewBag.Email = _login.GetEmail();
             List<Annonce> annonces = null;
             if (search != null)
                 annonces = Annonce.Search(search);
@@ -42,28 +49,32 @@ namespace fakeboncoin.Controllers
 
         public IActionResult FormAnnonce()
         {
+            if (!_login.IsLogged())
+            {
+                return RedirectToAction("Login", "Authentication");
+            }
             return View();
         }
 
         [HttpPost]
         public IActionResult SubmitFromAnnonce(Annonce annonce, IFormFile[] images)
         {
-            foreach (IFormFile image in images)
+            foreach(IFormFile image in images)
             {
-                annonce.Images.Add(new Image() { Url = Upload(image) });
+                annonce.Images.Add(new Image() { Url = _uploadService.Upload(image) });
             }
             annonce.Save();
             return RedirectToAction("Index");
         }
 
-        private string Upload(IFormFile file)
-        {
-            string pathFile = Path.Combine(_env.WebRootPath, "images", file.FileName);
-            Stream stream = System.IO.File.Create(pathFile);
-            file.CopyTo(stream);
-            stream.Close();
-            return "images/" + file.FileName;
-        }
+        //private string Upload(IFormFile file)
+        //{
+        //    string pathFile = Path.Combine(_env.WebRootPath, "images", file.FileName);
+        //    Stream stream = System.IO.File.Create(pathFile);
+        //    file.CopyTo(stream);
+        //    stream.Close();
+        //    return "images/" + file.FileName;
+        //}
 
 
         public IActionResult Favoris()

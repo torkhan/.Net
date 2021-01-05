@@ -11,7 +11,9 @@ namespace fakeboncoin.Models
         private static DataContext _instance = null;
         
         public DbSet<Annonce> Annonces { get; set; }
-        private DataContext()
+
+        public DbSet<Utilisateur> Utilisateurs { get; set; }
+        public DataContext()
         {
 
         }

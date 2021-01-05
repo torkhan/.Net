@@ -7,30 +7,27 @@
 
 @if (Model != null)
 {
-<div class="container m-10">
-    @foreach (Annonce a in Model)
-    {
-        <a class="bloc-annonce" asp-action="DetailAnnonce" asp-controller="Annonce" asp-route-id="@a.Id">
-            <div class="row m-1 bloc-annonce p-5">
-                <div class="col-3 bloc-image">
-                    <img src="~/@a.Images[0].Url" />
-                </div>
-                <div class="col">
-                    <div class="row m-1">
-                        <div class="h1 col">@a.Titre</div>
+    <div class="container m-10">
+        @foreach (Annonce a in Model)
+        {
+            <a class="bloc-annonce" asp-action="DetailAnnonce" asp-controller="Annonce" asp-route-id="@a.Id">
+                <div class="row m-1 bloc-annonce p-5">
+                    <div class="col-3 bloc-image">
+                        <img src="~/@a.Images[0].Url" />
                     </div>
-                    <div class="row m-1">
-                        <div class="h2 col">Prix @a.Prix</div>
+                    <div class="col">
+                        <div class="row m-1">
+                            <div class="h1 col">@a.Titre</div>
+                        </div>
+                        <div class="row m-1">
+                            <div class="h2 col">Prix @a.Prix</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </a>
-        <div class="row justify-content-md-center align-items-center m-5 p-5">
-            <a class="col btn btn-primary" asp-controller="Annonce" asp-action="DelToFavoris" asp-route-id="@a.Id">Retirer des Favoris</a>
-        </div>
+            </a>
 
-    }
-</div>
+        }
+    </div>
 }
 
 

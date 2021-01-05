@@ -26,7 +26,10 @@ namespace fakeboncoin
         {
             services.AddSession();
             services.AddHttpContextAccessor();
-            services.AddTransient<IFavoris, FavorisCookieService>();
+            services.AddTransient<IFavoris, FavorisSessionService>();
+            services.AddTransient<IUpload, UploadService>();
+            services.AddTransient<ILogin, LoginService>();
+            //services.AddAll();
             //services.AddSingleton<IFavoris, FavorisSessionService>();
             //services.AddScoped<IFavoris, FavorisSessionService>();
             services.AddControllersWithViews();
@@ -56,7 +59,7 @@ namespace fakeboncoin
             {
                 endpoints.MapControllerRoute(
                     name: "home",
-                    pattern: "/", new { controller = "Annonce", action = "Index" });
+                    pattern: "/", new { controller="Annonce", action="Index"});
                 endpoints.MapControllerRoute(
                     name: "search",
                     pattern: "/search/{search}", new { controller = "Annonce", action = "Index" });

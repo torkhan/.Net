@@ -63,6 +63,24 @@ namespace fakeboncoin.Migrations
                     b.ToTable("Image");
                 });
 
+            modelBuilder.Entity("fakeboncoin.Models.Utilisateur", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MotPasse")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Utilisateurs");
+                });
+
             modelBuilder.Entity("fakeboncoin.Models.Image", b =>
                 {
                     b.HasOne("fakeboncoin.Models.Annonce", "Annonce")

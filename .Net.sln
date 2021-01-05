@@ -43,13 +43,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentCours", "StudentCour
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelWPFMVVM", "HotelWPFMVVM\HotelWPFMVVM.csproj", "{1C3EE09A-1267-4A28-8CCE-293C46A5C64C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursAspNETCORE", "CoursAspNETCORE\CoursAspNETCORE.csproj", "{085EE426-0ACD-49EE-B530-2778A02BA20B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankAspNetCore", "BankAspNetCore\BankAspNetCore.csproj", "{95A30337-287D-41A7-B6D6-0C07B92C567C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fakeboncoin", "fakeboncoin\fakeboncoin.csproj", "{3FAF69CD-FB5E-4412-9130-C988899F4A82}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fake Boncoin", "Fake Boncoin\Fake Boncoin.csproj", "{A01A3B87-9C5C-493C-87EE-EFF2F82F7BCB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursAspNETCORE", "..\FormationM2I\CoursAspNETCORE\CoursAspNETCORE.csproj", "{15B4F42B-319F-4A95-A479-2C2F54B078C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -137,10 +137,6 @@ Global
 		{1C3EE09A-1267-4A28-8CCE-293C46A5C64C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C3EE09A-1267-4A28-8CCE-293C46A5C64C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C3EE09A-1267-4A28-8CCE-293C46A5C64C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{085EE426-0ACD-49EE-B530-2778A02BA20B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{085EE426-0ACD-49EE-B530-2778A02BA20B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{085EE426-0ACD-49EE-B530-2778A02BA20B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{085EE426-0ACD-49EE-B530-2778A02BA20B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{95A30337-287D-41A7-B6D6-0C07B92C567C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{95A30337-287D-41A7-B6D6-0C07B92C567C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95A30337-287D-41A7-B6D6-0C07B92C567C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -153,6 +149,10 @@ Global
 		{A01A3B87-9C5C-493C-87EE-EFF2F82F7BCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A01A3B87-9C5C-493C-87EE-EFF2F82F7BCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A01A3B87-9C5C-493C-87EE-EFF2F82F7BCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15B4F42B-319F-4A95-A479-2C2F54B078C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15B4F42B-319F-4A95-A479-2C2F54B078C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15B4F42B-319F-4A95-A479-2C2F54B078C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15B4F42B-319F-4A95-A479-2C2F54B078C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
