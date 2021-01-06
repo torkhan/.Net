@@ -12,6 +12,7 @@ namespace fakeboncoin.Models
         
         public DbSet<Annonce> Annonces { get; set; }
 
+
         public DbSet<Utilisateur> Utilisateurs { get; set; }
         public DataContext()
         {

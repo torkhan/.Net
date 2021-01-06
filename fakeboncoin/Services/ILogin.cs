@@ -8,11 +8,11 @@ namespace fakeboncoin.Services
 {
     public interface ILogin
     {
-        bool Login(Utilisateur utilisateur);
+        Task<bool> Login(Utilisateur utilisateur);
 
         bool IsLogged();
 
-        bool LogOut();
+        Task<bool> LogOut();
 
         string GetEmail();
     }

@@ -22,9 +22,9 @@ namespace fakeboncoin.Controllers
             return View();
         }
 
-        public IActionResult SubmitLogin(Utilisateur utilisateur)
+        public async Task<IActionResult> SubmitLogin(Utilisateur utilisateur)
         {
-            if(_login.Login(utilisateur))
+            if(await _login.Login(utilisateur))
             {
                 return RedirectToAction("FormAnnonce", "Annonce");
             }
@@ -34,9 +34,9 @@ namespace fakeboncoin.Controllers
             }            
         }
 
-        public IActionResult LogOut()
+        public async Task<IActionResult> LogOut()
         {
-            _login.LogOut();
+            await _login.LogOut();
             return RedirectToAction("Index", "Annonce");
         }
     }

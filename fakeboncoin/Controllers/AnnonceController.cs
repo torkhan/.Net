@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using fakeboncoin.Models;
 using fakeboncoin.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +30,8 @@ namespace fakeboncoin.Controllers
             _uploadService = uploadService;
             _login = login;
         }
+
+        [Authorize(Policy = "connect")]
         public IActionResult Index(string search)
         {
             //ViewBag.Email = _login.GetEmail();
@@ -47,12 +50,14 @@ namespace fakeboncoin.Controllers
             return View(Annonce.GetAnnonce(id));
         }
 
+
+        [Authorize(Policy = "connectAdmin")]
         public IActionResult FormAnnonce()
         {
-            if (!_login.IsLogged())
-            {
-                return RedirectToAction("Login", "Authentication");
-            }
+            //if (!_login.IsLogged())
+            //{
+            //    return RedirectToAction("Login", "Authentication");
+            //}
             return View();
         }
 
