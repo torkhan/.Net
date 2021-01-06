@@ -1,66 +1,71 @@
 ﻿@model Compte
+@inject ILogin _login
 @{
     ViewData["Title"] = "Accueil";
 }
 
-<div class="container">
-    <div class="row justify-content-center m-1 align-items-center">
-        <h1 class="col-12">Accueil Gestion compte</h1>
-    </div>
-    <form asp-action="Search" asp-controller="Compte">
+    <div class="container">
         <div class="row justify-content-center m-1 align-items-center">
-            <div class="col-8 p-1">
-                <input type="text" placeholder="Recherche compte par numéro" name="numero" class="form-control" />
+            <h1 class="col-12">Accueil Gestion compte</h1>
+        </div>
+        <form asp-action="Search" asp-controller="Compte">
+            <div class="row justify-content-center m-1 align-items-center">
+                <div class="col-8 p-1">
+                    <input type="text" placeholder="Recherche compte par numéro" name="numero" class="form-control" />
+                </div>
+                <div class="col-4 p-1">
+                    <button type="submit" class="btn btn-primary">Rechercher</button>
+                </div>
             </div>
-            <div class="col-4 p-1">
-                <button type="submit" class="btn btn-primary">Rechercher</button>
-            </div>
-        </div>
-    </form>
-    @if (Model != null)
-    {
-        <div class="row m-1">
-            <h2 class="col"><u>Information Client</u></h2>
-        </div>
-        <div class="row m-1">
-            <div class="col-2">Nom : </div>
-            <div class="col-3 font-weight-bold">@Model.Client.Nom</div>
-        </div>
-        <div class="row m-1">
-            <div class="col-2">Prénom : </div>
-            <div class="col-3 font-weight-bold">@Model.Client.Prenom</div>
-        </div>
-        <div class="row m-1">
-            <div class="col-2">Téléphone : </div>
-            <div class="col-3 font-weight-bold">@Model.Client.Telephone</div>
-        </div>
-        <div class="row m-1">
-            <h2 class="col"><u>Information Compte</u></h2>
-        </div>
-        <div class="row m-1">
-            <div class="col-2">Solde : </div>
-            <div class="col-3 font-weight-bold">@Model.Solde €</div>
-        </div>
-        <div class="row m-1">
-            <h3 class="col"><u>Opérations</u></h3>
-        </div>
-        @foreach (Operation o in Model.Operations)
+        </form>
+        @if (Model != null)
         {
             <div class="row m-1">
-                <div class="col-2">@o.DateOperation</div>
-                @if (o.Montant > 0)
-                {
-                    <div class="col-2 text-success">@o.Montant</div>
-                }
-                else
-                {
-                    <div class="col-2 text-danger">@o.Montant</div>
-                }
+                <h2 class="col"><u>Information Client</u></h2>
             </div>
+            <div class="row m-1">
+                <div class="col-2">Nom : </div>
+                <div class="col-3 font-weight-bold">@Model.Client.Nom</div>
+            </div>
+            <div class="row m-1">
+                <div class="col-2">Prénom : </div>
+                <div class="col-3 font-weight-bold">@Model.Client.Prenom</div>
+            </div>
+            <div class="row m-1">
+                <div class="col-2">Téléphone : </div>
+                <div class="col-3 font-weight-bold">@Model.Client.Telephone</div>
+            </div>
+            <div class="row m-1">
+                <h2 class="col"><u>Information Compte</u></h2>
+            </div>
+            <div class="row m-1">
+                <div class="col-2">Solde : </div>
+                <div class="col-3 font-weight-bold">@Model.Solde €</div>
+            </div>
+            <div class="row m-1">
+                <h3 class="col"><u>Opérations</u></h3>
+            </div>
+            @foreach (Operation o in Model.Operations)
+            {
+                <div class="row m-1">
+                    <div class="col-2">@o.DateOperation</div>
+                    @if (o.Montant > 0)
+                    {
+                        <div class="col-2 text-success">@o.Montant</div>
+                    }
+                    else
+                    {
+                        <div class="col-2 text-danger">@o.Montant</div>
+                    }
+                </div>
+            }
+            if (_login.GetRole() == "superadmin")
+            {
+                <div class="row m-1">
+                    <a class=" col btn btn-success" asp-controller="Compte" asp-action="Operation" asp-route-id="@Model.Numero" asp-route-type="depot">Dépôt</a>
+                    <a class="col btn btn-danger" asp-controller="Compte" asp-action="Operation" asp-route-id="@Model.Numero" asp-route-type="retrait">Retrait</a>
+                </div>
+            }
+
         }
-        <div class="row m-1">
-            <a class=" col btn btn-success" asp-controller="Compte" asp-action="Operation" asp-route-id="@Model.Numero" asp-route-type="depot">Dépôt</a>
-            <a class="col btn btn-danger" asp-controller="Compte" asp-action="Operation" asp-route-id="@Model.Numero" asp-route-type="retrait">Retrait</a>
-        </div>
-    }
-</div>
+    </div>

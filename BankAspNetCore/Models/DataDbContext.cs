@@ -14,6 +14,8 @@ namespace BankAspNetCore.Models
         public DbSet<Compte> Comptes { get; set; }
         public DbSet<Operation> Operations { get; set; }
 
+        public DbSet<Utilisateur> Utilisateurs { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source=(LocalDb)\coursM2I;Initial Catalog=banque;Integrated Security=True");
@@ -35,7 +37,7 @@ namespace BankAspNetCore.Models
             }
         }
 
-        private DataDbContext()
+        public DataDbContext()
         {
 
         }

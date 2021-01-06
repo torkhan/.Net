@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BankAspNetCore.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BankAspNetCore.Controllers
@@ -14,12 +15,13 @@ namespace BankAspNetCore.Controllers
             return View();
         }
 
-
+        [Authorize(Policy = "admin")]
         public IActionResult Search(int numero)
         {
             return View("Index", Compte.GetCompteById(numero));
         }
 
+        [Authorize(Policy = "admin")]
         [HttpGet]
         public IActionResult CreationCompte(string message,string type)
         {
@@ -31,7 +33,7 @@ namespace BankAspNetCore.Controllers
             return View("FormCompte");
         }
 
-
+        [Authorize(Policy = "admin")]
         [HttpPost]
         public IActionResult SubmitCreationCompte(Client client, decimal solde)
         {
@@ -51,12 +53,16 @@ namespace BankAspNetCore.Controllers
             return RedirectToAction("CreationCompte", new { message = message, type = type });
         }
 
+        [Authorize(Policy = "superAdmin")]
+
         public IActionResult Operation(int id, string type)
         {
             ViewBag.Type = type;
             ViewBag.Numero = id;
             return View();
         }
+
+        [Authorize(Policy = "superAdmin")]
 
         public IActionResult SubmitOperation(int numero, decimal montant, string type)
         {
